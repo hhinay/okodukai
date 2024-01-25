@@ -1,0 +1,64 @@
+{% extends './base.html' %}
+{% load mathfilters %}
+{% block content %}   
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <a class="navbar-brand" href="#">トップ</a> -->
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{% url 'app:passbook' %}">おこづかい帳</a></li>
+                    <li><a href="{% url 'app:want' %}">欲しいものリスト</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="container">
+  <!-- <div class="starter-template"> -->
+      
+            <!-- <h1>おこづかい帳</h1> -->
+            <div class="horizontal-container">
+              <p>残高: {{ old_balance }}</p>
+              <p>支出: {{ old_title }}</p>
+              <p>収入: {{ old_title2 }}</p>
+            </div>
+            
+            <button><a href="{% url 'app:new' %}" class="btn">＋</a></button>
+            <table border="1" width="100%"> 
+              <tr>
+                <th width="10%">日時</th>
+                <th width="40%">メモ</th>
+                <th width="10%">支出</th>
+                <th width="10%">収入</th>
+                <!-- <th width="10%">残高</th> -->
+              </tr>
+              
+              {% for money in moneys %}
+              <tr>
+                <td width="10%">{{ money.duedate }}</td>
+                <td width="40%">{{ money.content }}</td>
+                <td width="10%">{{ money.title }}</td>
+                <td width="10%">{{ money.title2 }}</td>
+                <!-- <td width="10%">{{ old_balance }}</td> -->
+                <!-- <td width="10%">{{ money.balance }}</td> -->
+                {% if money.title == 0 %}
+                  <td width="5%"><button><a href="{% url 'app:edit0' money.id %}">編集</a></td></button>
+                {% else %}
+                  <td width="5%"><button><a href="{% url 'app:edit' money.id %}">編集</a></td></button>
+                {% endif %}
+                <td width="5%"><button><a href="{% url 'app:delete' money.id %}">削除</a></td></button>
+              </tr>
+              {% endfor %}
+              
+            </table>
+
+        <!-- <a href="{% url 'app:index' %}">戻る</a> -->
+    
+{% endblock %}

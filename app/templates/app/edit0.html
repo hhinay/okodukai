@@ -1,0 +1,17 @@
+{% extends './base.html' %}
+{% block content %}
+    <div class="centered-container">
+        <h1>収入</h1>
+        <form action="{% url 'app:update' money.id %}" method="post">
+            {% csrf_token %}
+            <p>{{ money_form.title2 }}</p>
+            <input type="hidden" {{ money_form.title }}
+            <p>{{ money_form.duedate }}</p>
+            <p>{{ money_form.content }}</p>
+            <input type="hidden" {{ money_form.balance }}
+            <a href="{% url 'app:editi' id=money.id %}" >支出</a>
+            <input type="submit" value="保存">
+            <a href="{% url 'app:passbook' %}">戻る</a>
+        </form>
+    </div>
+{% endblock %}

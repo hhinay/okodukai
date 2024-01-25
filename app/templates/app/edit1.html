@@ -1,0 +1,12 @@
+{% extends './base.html' %}
+{% block content %}
+    <div class="centered-container">
+        <form action="{% url 'app:update1' want.id %}" method="post">
+            {% csrf_token %}
+            <p>{{ want_form.yen }}</p>
+            <p>{{ want_form.memo }}</p>
+            <input type="submit" value="保存">     
+            <a href="{% url 'app:want' %}">戻る</a>       
+        </form>
+    </div>
+{% endblock %}

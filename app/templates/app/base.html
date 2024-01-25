@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>おこづかい帳</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <style>
+            
+        body {
+        	background-color: #ffffff;
+            }
+        .starter-template{
+            background-color: rgb(85, 14, 14);
+            }
+        .navbar-inverse  {
+            background-color:rgb(169, 204, 249);
+            border-color:rgb(169, 204, 249);
+        }
+        .navbar-inverse .navbar-nav > li > a {
+            color:black;
+                }
+        .navbar-inverse .navbar-brand {
+            color:black;
+        }
+        h1    {
+                font-size: 300%;
+                font-weight: bold;
+        	    padding: 30px;
+        	    color: rgb(86, 120, 254);
+        	    
+        	}
+            .btn--orange,
+            a.btn--orange {
+            color: #fff;
+            background-color: #eb6100;
+            }
+            .btn--orange:hover,
+            a.btn--orange:hover {
+            color: #fff;
+            background: #f56500;
+            }
+
+            a.btn--radius {
+            border-radius: 100vh;
+            }
+        p   {
+
+        	    padding: 10px 10px; /*内側*/ /*上下 左右*/
+        	    margin: 30px; /*外側*/
+        	    font-size: 120%;
+        	    font-family: serif;
+            }
+        .horizontal-container {
+            display: flex; 
+            justify-content: space-between; 
+        }
+        .item {
+            padding: 10px; /* 各アイテムの内側の余白を設定 */
+        }
+
+        .item1 {
+            margin-right: 20px; /* アイテム1の右側のマージンを設定 */
+        }
+
+        .item2 {
+            margin-left: 30px; /* アイテム2の左側のマージンを設定 */
+        }
+        .horizontal-container p {
+            width: 30%; 
+            margin: 100; 
+        }
+        .horizontal-container h1 {
+            width: 30%; 
+            margin: 100; 
+        }
+        .centered-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .centered-container form {
+            text-align: left;
+        }
+        .right-aligned-links {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* 各リンクのスタイル */
+        .right-aligned-links a {
+            margin-left: 10px; /* リンク間に隙間を設ける */
+        }
+        </style>
+    
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                  <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                          <span class="sr-only">Toggle navigation</span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                          </button>
+                          <!-- <a class="navbar-brand" href="#">トップ</a> -->
+                  </div>
+                  <div id="navbar" class="collapse navbar-collapse">
+                          <ul class="nav navbar-nav">
+                              <li><a href="{% url 'app:passbook' %}">おこづかい帳</a></li>
+                              <li><a href="{% url 'app:want' %}">欲しいものリスト</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </nav>
+          <div class="container">
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
